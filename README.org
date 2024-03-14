@@ -1,0 +1,35 @@
+#+title: lsp-treemacs-nerd-icons
+#+author: Kyrylo Baibula (Velnbur)
+
+[[./screenshots/demo.png]]
+
+An extension of [[https://github.com/emacs-lsp/lsp-treemacs][lsp-treemacs]] "Default" theme named ~"nerd-icons-ext"~ which uses
+[[https://github.com/rainstormstudio/nerd-icons.el][nerd-icons]] for some of the ~lsp-mode~ and ~lsp-treemacs~ components, like:
+
++ Headerline breadcrumbs
++ Symbols panel
++ Error list
+
+* Installation
+
+** Doom Emacs
+
+In ~$HOME/.config/doom/packages.el~:
+
+#+begin_src emacs-lisp
+(package! lsp-treemacs-nerd-icons
+  :recipe (:host github :repo "Velnbur/lsp-treemacs-nerd-icons" :files ("*.el")))
+#+end_src
+
+In ~$HOME/.config/doom/config.el~:
+
+#+begin_src emacs-lisp
+(use-package! lsp-treemacs-nerd-icons
+  ;; HACK: Load after the `lsp-treemacs' created default themes
+  :init (with-eval-after-load 'lsp-treemacs
+          (require 'lsp-treemacs-nerd-icons)))
+
+(use-package! lsp-treemacs
+  :custom
+  (lsp-treemacs-theme "nerd-icons-ext"))
+#+end_src
